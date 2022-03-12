@@ -65,7 +65,7 @@ CREATE TABLE Departments(
     Dep_Name VARCHAR(30) NOT NULL,-- ex: giftshop, scultpures, classical
     Dep_Mus	VARCHAR(65) NOT NULL,
     PRIMARY KEY(Dep_Num),
-    FOREIGN KEY (Dep_Mus) REFERENCES MUSEUM(mName)
+    FOREIGN KEY (Dep_Mus) REFERENCES Museum(mName)
     );
 CREATE TABLE EMPLOYEES (
   EMPLOYEE_ID INT(10) NOT NULL,  -- Employee's ID
@@ -79,7 +79,7 @@ CREATE TABLE EMPLOYEES (
   SALARY DECIMAL(9, 2) NOT NULL,
   BIRTHDATE DATE NOT NULL,
   dNUM INT(10) NOT NULL,
-  FOREIGN KEY (dNum) REFERENCES DEPARTMENTS(Dep_Num), -- works in department
+  FOREIGN KEY (dNum) REFERENCES Departments(Dep_Num), -- works in department
   PRIMARY KEY (EMPLOYEE_ID)
 );
 CREATE TABLE ARTPIECES (
@@ -92,7 +92,7 @@ CREATE TABLE ARTPIECES (
   OUTDATE date DEFAULT NULL,
   dID INT(10) NOT NULL,
   PRIMARY KEY (AID),
-  FOREIGN KEY (dID) REFERENCES DEPARTMENTS(Dep_Num),
+  FOREIGN KEY (dID) REFERENCES Departments(Dep_Num),
   CONSTRAINT INVALD_INSTALL_DATE CHECK (((INDATE > '2001-01-01') and (INDATE <= sysdate()))),
   CONSTRAINT INVALD_REMOVE_DATE CHECK (((OUTDATE > '2001-01-01') and (OUTDATE >= INDATE)))
 );
@@ -100,7 +100,7 @@ CREATE TABLE ACCESS(
 	ACID INT(8) NOT NULL,
     ACEN VARCHAR(50) NOT NULL,
 	FOREIGN KEY(ACID) REFERENCES CUSTOMERS(CID),
-    FOREIGN KEY(ACEN) REFERENCES EXHIBITION(exName)
+    FOREIGN KEY(ACEN) REFERENCES Exhibition(exName)
     
 );
 
@@ -110,10 +110,10 @@ VALUES('Houston Museum of Fine Arts','1001 Bissonnet St', 'Houston', 'TX', '7700
 INSERT INTO Exhibition(EXID,exName,COST,sDate,eDate)
 VALUES(1,'Summer Art Pieces',10.50,'2021-06-09','2022-07-09');
 
-INSERT INTO Customers VALUES ('Dorian', 'Nozales', '23', '8325671234', 'myemail@yahoo.com', 1,'CollegeStudent');
-INSERT INTO Customers VALUES ('Erika', 'Ubuya', '5', null, null, 2,'Child');
-INSERT INTO Customers VALUES ('Elijah', 'Tottenham', '69', '6347895003', null, 3,'Senior');
-INSERT INTO Customers VALUES ('Zachary', 'Sams', '36', '3484700098', null, 4,'None');
+INSERT INTO CUSTOMERS VALUES ('Dorian', 'Nozales', '23', '8325671234', 'myemail@yahoo.com', 1,'CollegeStudent');
+INSERT INTO CUSTOMERS VALUES ('Erika', 'Ubuya', '5', null, null, 2,'Child');
+INSERT INTO CUSTOMERS VALUES ('Elijah', 'Tottenham', '69', '6347895003', null, 3,'Senior');
+INSERT INTO CUSTOMERS VALUES ('Zachary', 'Sams', '36', '3484700098', null, 4,'None');
 
 INSERT INTO GiftShop VALUES (1, 'a',10.25,'Sold');
 INSERT INTO GiftShop VALUES (2, 'b',1.99,'In Stock');
@@ -124,7 +124,7 @@ INSERT INTO GiftShop VALUES (4,'d',4.00, 'Sold');
 INSERT INTO TICKET(TID,TTYPES, PRICE,  SOLDDATE, CUSID)
 VALUES ('123456780','CHILD','12.99', '2020-09-09',1);  -- TESTING : CONSTARINT SOLD, CORRECT RESULT: FAIL_TO_INSERT
 
-INSERT INTO DEPARTMENTS(Dep_Num,Dep_Name,Dep_Mus)
+INSERT INTO Departments(Dep_Num,Dep_Name,Dep_Mus)
 VALUES (1,'S','Houston Museum of Fine Arts');
 
 -- set up in a way that this could now apply to multiple museums if they happen to be owned by the same dude
@@ -141,8 +141,5 @@ VALUES ('198762','DAVID','MICHEANGELO','SCULPTURE','a','2022-01-08','2022-01-08'
 INSERT INTO ACCESS(ACID,ACEN)
 VALUES (1,'Summer Art Pieces');
 
-SELECT mName AS Museum, CONCAT(Street,', ',City,', ',Province,' ', ZipCode) AS 'Address', sTime AS 'Opening Hours', eTime AS 'Closing Hours', Ratings
-FROM Museum;
-
 SELECT *
-FROM ACCESS
+FROM Museum, Exhibition, CUSTOMERS, GiftShop, TICKET, Departments, EMPLOYEES,ARTPIECES,ACCESS
