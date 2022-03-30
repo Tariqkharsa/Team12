@@ -32,7 +32,7 @@
 
 
             <!--exhibition cards-->
-            <div class="cards-container">
+            <div class="all-cards-container">
 
                 <div class= "cards">
                     <img src="../images/leonardo.jpg.webp" alt= "work by leonardo"  >
