@@ -30,6 +30,58 @@
             <h2>Exhibitions</h2>
             <h3>Current Exhibitions</h4>
 
+
+            <!--exhibition cards-->
+            <div class="cards-container">
+
+                <div class= "cards">
+                    <img src="../images/leonardo.jpg.webp" alt= "work by leonardo"  >
+                    <div class = "container">
+                        <h4><b>Leonardo</b></h4>
+                        <p>Through April 4, 2022</p>
+                        <button>Read More</button>
+                    </div>
+                </div>
+
+
+                <div class= "cards">
+                    <img src="../images/monet.jpg" alt= "work by Monet"  >
+                    <div class = "container">
+                        <h4><b>Monet</b></h4>
+                        <p>Through April 4, 2022</p>
+                        <button>Read More</button>
+                    </div>
+                </div>
+
+                <div class= "cards">
+                    <img src="../images/rafael.jpg" alt= "work by Rafael"  >
+                    <div class = "container">
+                        <h4><b>Raefel</b></h4>
+                        <p>Through April 4, 2022</p>
+                        <button>Read More</button>
+                    </div>
+                </div>
+
+                <div class= "cards">
+                    <img src="../images/vangoh.jpg" alt= "work by Vangoh"  >
+                    <div class = "container">
+                        <h4><b>Vangoh</b></h4>
+                        <p>Through April 4, 2022</p>
+                        <button>Read More</button>
+                    </div>
+                </div>
+
+                <div class= "cards">
+                    <img src="../images/rococo-period.jpg" alt= "work during Rococo"  >
+                    <div class = "container">
+                        <h4><b>Rococo period art work</b></h4>
+                        <p>Through April 4, 2022</p>
+                        <button>Read More</button>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </body>
 </html>
