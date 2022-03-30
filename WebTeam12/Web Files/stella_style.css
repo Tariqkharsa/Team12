@@ -32,6 +32,18 @@ body {
     padding-right: 10px;
     background-color: transparent;
 }
+.nav-item a{
+    text-decoration: none;
+}
+
+.nav-item a:visited{
+    color: black;
+}
+
+.nav-item a:hover{
+    color:#cc9900
+}
+
 
 .nav-item.name{
     font-size: 35px;
@@ -40,14 +52,21 @@ body {
 }
 
 .login-button button{
+    cursor: pointer;
     margin-left: 450px;
     border-radius: 0.4em;
     font-size: 30px;
     padding: 10px;
     color:rgb(49, 45, 45);
     background-color: #cc9900;
-    
 }
+
+.login-button button:hover{
+    color:rgb(110, 91, 28);
+
+}
+
+
 
 /***** following is body*****/
 
