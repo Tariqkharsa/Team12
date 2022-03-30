@@ -65,12 +65,14 @@ h2{
     font-size: 55px;
     border-bottom: 1px solid #d4bb70;
     border-radius: -10px;
+    text-align: center;
 }
 
 h3{
     font-family: Georgia, serif;
     color: rgb(90, 87, 74);
     font-size: 30px;
+    text-align: center;
 }
 
 .all-cards-container{
