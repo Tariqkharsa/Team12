@@ -9,9 +9,10 @@
     </head>
 
     <body>
+    <!--following is nav bar-->
         <div class="header-container">
             <a href= "../index.php"><img class= "logo" src="../images/museum_icon3.png" alt="logo"></a>
-            <nav>
+            
                 <ul class= "nav-links">
                 <li class="nav-item name"><a href="../index.php">FabMuseum</a></li>
                     <li class="nav-item"><a href=#> About</a></li>
@@ -21,7 +22,14 @@
                     
                     <li class="nav-item login-button"><a href=#><button>Login</button></a></li>
                 </ul>
-            </nav>
+            
+        </div>
+
+<!-- following is body -->
+        <div class = "body-page">
+            <h2>Exhibitions</h2>
+            <h3>Current Exhibitions</h4>
+
         </div>
     </body>
 </html>

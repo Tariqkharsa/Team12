@@ -1,7 +1,7 @@
 body {
     font-family: "Trebuchet MS", Verdana, sans-serif;
     font-size: 16px;
-    background-color: dimgrey;
+    background-color: white;
     color: #696969;
     padding: 3px;
 }
@@ -17,11 +17,12 @@ body {
     display: flex;
     background:white;
     justify-content: flex-start;
-    align-items: flex-end;
-    
+    align-items: flex-end; 
+    padding: 10px;
 }
 
 .nav-item{
+    font-family: Georgia, serif;
     text-decoration: none;
     display:inline-block;
     flex:1 1 auto;
@@ -33,12 +34,13 @@ body {
 }
 
 .nav-item.name{
-    font-size: 30px;
+    font-size: 35px;
     text-decoration: none;
+    font-weight: bold;
 }
 
 button{
-    margin-left: 500px;
+    margin-left: 450px;
     border-radius: 0.4em;
     font-size: 30px;
     padding: 10px;
@@ -46,3 +48,27 @@ button{
     background-color: #cc9900;
     
 }
+
+/***** following is body*****/
+
+.body-page{
+    background-color: white;
+    margin: 10px;
+    padding:15px;
+    border:3px solid #cc9900;
+    border-radius: 15px;
+}
+h2{
+    font-family: Georgia, serif;
+    color: black;
+    font-size: 55px;
+    border-bottom: 3px solid #cc9900;
+    border-radius: -10px;
+}
+
+h3{
+    font-family: Georgia, serif;
+    color: rgb(90, 87, 74);
+    font-size: 30px;
+}
+
