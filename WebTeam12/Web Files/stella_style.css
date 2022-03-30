@@ -1,0 +1,48 @@
+body {
+    font-family: "Trebuchet MS", Verdana, sans-serif;
+    font-size: 16px;
+    background-color: dimgrey;
+    color: #696969;
+    padding: 3px;
+}
+
+
+.logo{
+    width: 110px;
+    height: auto;
+    
+}
+
+.header-container{
+    display: flex;
+    background:white;
+    justify-content: flex-start;
+    align-items: flex-end;
+    
+}
+
+.nav-item{
+    text-decoration: none;
+    display:inline-block;
+    flex:1 1 auto;
+    cursor:pointer;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: transparent;
+}
+
+.nav-item.name{
+    font-size: 30px;
+    text-decoration: none;
+}
+
+button{
+    margin-left: 500px;
+    border-radius: 0.4em;
+    font-size: 30px;
+    padding: 10px;
+    color:rgb(49, 45, 45);
+    background-color: #cc9900;
+    
+}
