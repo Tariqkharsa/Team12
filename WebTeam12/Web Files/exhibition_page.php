@@ -56,7 +56,7 @@
                 <div class= "cards">
                     <img src="../images/rafael.jpg" alt= "work by Rafael"  >
                     <div class = "container">
-                        <h4><b>Raefel</b></h4>
+                        <h4><b>Rafael</b></h4>
                         <p>Through April 4, 2022</p>
                         <button>Read More</button>
                     </div>
