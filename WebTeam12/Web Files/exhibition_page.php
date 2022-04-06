@@ -18,8 +18,7 @@ if($connect->connect_error) {
 
 //sql query
 $query = mysqli_query($connect,"select exName, eDate, cover_url from Exhibition where sDate <= sysdate() and eDate>=sysdate();");
-$rows = mysqli_fetch_all($query);
-
+//$rows = mysqli_fetch_all($query);
 
 /*
 foreach ($rows as $thingy){
@@ -37,6 +36,7 @@ while ($rows = mysqli_fetch_array($query))
 //mysqli_close($connect);
 
 ?>
+
 
 
 <!DOCTYPE html>
@@ -67,18 +67,13 @@ while ($rows = mysqli_fetch_array($query))
         </div>
 
 
-
-
 <!-- following is body -->
         <div class = "body-page">
             <h2>Exhibitions</h2>
-            <h3>Current Exhibitions</h4>
-
-            
+            <h3>Current Exhibitions</h4> 
 
             <!--exhibition cards-->
        
-
         <div class="all-cards-container">
 
              <?php foreach ($query as $thingy): ?>
