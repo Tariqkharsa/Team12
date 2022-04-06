@@ -40,6 +40,10 @@ body {
     color: black;
 }
 
+.nav-item a:active{
+    color:black
+}
+
 .nav-item a:hover{
     color:#cc9900
 }
@@ -59,6 +63,7 @@ body {
     padding: 10px;
     color:rgb(49, 45, 45);
     background-color: #cc9900;
+    
 }
 
 .login-button button:hover{
