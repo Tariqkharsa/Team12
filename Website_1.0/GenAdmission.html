@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<link href="tFormat.css" rel="stylesheet">
+<body>
+  <div id="main">
+  <h1>TICKETS: GENERAL ADMISSION</h1>
+  <h2>Choose one of the following:</h2>
+
+
+  <form action="addticket.php" method="get">
+    <label>Regular:</label>
+    <input type="number" name="regular tickets" min=0 max=9999/><br>
+
+    <label>Child:</label>
+    <input type="number" name="child tickets" min=0 max=9999/><br>
+
+    <label>Student:</label>
+    <input type="number" name="student tickets" min=0 max=9999/><br>
+
+    <label>Senior:</label>
+    <input type="number" name="senior tickets" min=0 max=9999/><br>
+
+    <label>Veteran:</label>
+    <input type="number" name="veteran tickets" min=0 max=9999/><br>
+
+    <br>
+    <br>
+
+    <h2>Enter the following:</h2>
+
+    <label>First Name:</label>
+    <input type="text" name="firstname"/><br>
+
+    <label>Last Name:</label>
+    <input type="text" name="lastname"/><br>
+
+    <label>Age:</label>
+    <input type="number" name="age" min=4 max=200/><br>
+
+    <label>Phone Number:</label>
+    <input type="tel" name="telephone number"/><br>
+
+    <label>Email:</label>
+    <input type="email" name="email"/><br>
+
+    <label>Status:</label>
+    <select>
+      <option value="None">None</option>
+      <option value="CStudent">College Student</option>
+      <option value="Veteran">Veteran</option>
+      <option value="Senior">Senior</option>
+      <option value="Child">Child</option>
+    </select><br>
+
+    <label>Date:</label>
+    <input type="date" id="start" name="sDate" value="2022-03-26" min="2022-01-01" max="9999-12-31"><br>
+    <input type="submit" name=submit value="Enter"/>
+    </form>  
+
+
+
+  
+  <a class="Return_button" href="Ticket.html" id = "return-button">Return</a>
+
+</div>
+</body>
+</html>
