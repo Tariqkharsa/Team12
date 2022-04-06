@@ -17,7 +17,7 @@ if($connect->connect_error) {
 // $customer_id = $_SESSION['customer']
 
 //sql query
-$query = mysqli_query($connect,"select exName, eDate, cover_url from Exhibition where sDate <= sysdate() and eDate>=sysdate();");
+$query = mysqli_query($connect,"select exName, eDate, cover_url from Exhibition where sDate <= sysdate() and eDate>=sysdate() order by eDate asc;");
 //$rows = mysqli_fetch_all($query);
 
 /*

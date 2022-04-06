@@ -194,6 +194,11 @@ CREATE TABLE `Exhibition` (
   CONSTRAINT `INVALID_INSTALL_DATE` CHECK (((`sDate` > _utf8mb4'2001-01-01') and (`sDate` <= sysdate()))),
   CONSTRAINT `INVALID_REMOVE_DATE` CHECK (((`eDate` > _utf8mb4'2001-01-01') and (`eDate` >= `sDate`)))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+alter table Exhibition 
+
+drop column EXID,
+add column cover_url varchar(200) not null;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
