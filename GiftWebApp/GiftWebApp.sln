@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftWebApp", "GiftWebApp.csproj", "{31CF7618-F3CC-4A11-9C25-3E6D3101A585}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31CF7618-F3CC-4A11-9C25-3E6D3101A585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31CF7618-F3CC-4A11-9C25-3E6D3101A585}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31CF7618-F3CC-4A11-9C25-3E6D3101A585}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31CF7618-F3CC-4A11-9C25-3E6D3101A585}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5D1C71F0-B55A-4335-B8EF-5F97BA8B7132}
+	EndGlobalSection
+EndGlobal
