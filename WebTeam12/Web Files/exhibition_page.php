@@ -85,7 +85,7 @@ while ($rows = mysqli_fetch_array($query))
                     <p>Through <?=htmlspecialchars($thingy["eDate"])?></p>
                     <button>Read More</button>
                 </div>
-            </div>
+            </div>    
             <?php endforeach ?>
                             
             </div>   
