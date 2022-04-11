@@ -1,3 +1,7 @@
+
+<!--------------This is only a copy of exhibition_page------------------->
+
+
 <!--connecting to cloud database-->
 <?php
 
@@ -18,22 +22,7 @@ if($connect->connect_error) {
 
 //sql query
 $query = mysqli_query($connect,"select exName, eDate, cover_url from Exhibition where sDate <= sysdate() and eDate>=sysdate() order by eDate asc;");
-//$rows = mysqli_fetch_all($query);
 
-/*
-foreach ($rows as $thingy){
-    echo $thingy->exName;
-}
-*/
-/*
-while ($rows = mysqli_fetch_array($query))
-{
-    echo $rows["exName"];
-    echo $rows["eDate"];
-}
-*/
-
-//mysqli_close($connect);
 
 ?>
 
@@ -50,28 +39,20 @@ while ($rows = mysqli_fetch_array($query))
     </head>
 
     <body>
+
     <!--following is nav bar-->
         <div class="header-container">
-            <a href= "../front.php"><img class= "logo" src="../images/museum_icon3.png" alt="logo"></a>
+            <a href= "index.php"><img class= "logo" src="../images/museum_icon3.png" alt="logo"></a>
             
                 <ul class= "nav-links">
-                <li class="nav-item name"><a href="../front.php">FabMuseum</a></li>
+                <li class="nav-item name"><a href="../index.php">FabMuseum</a></li>
                     <li class="nav-item"><a href=#> About</a></li>
                     <li class="nav-item"><a href= "./Ticket.html"> Tickets</a></li>
                     <li class="nav-item"><a href= "./exhibition_page.php">Exhibition</a></li>
                     <li class="nav-item"><a href="../Collections/Collection.php"> Collection </a></li>
-                    
-                    <div class="dropdown">
-                    <li class="nav-item">Manage</li>  <!--manage button is right hereeeeeeeeeeeeee-->
-                        <div class ="dropdown-content">
-                            <a href="./cur_exhibition.php">Exhibitions</a>
-                            <a href="../Collections/Collection.php">Art Pieces</a>
-                            <a href=#>Employee</a>
-                            <a href=#>Report</a>
-                        </div>
 
-                    </div>
-                    <li class="nav-item login-button" style="float:right;"><a href="../Login.php"><button>Login</button></a></li>
+                    
+                    <li class="nav-item login-button" ><a href="../Login/Login.php"><button >Login</button></a></li>
                 </ul>
             
         </div>
