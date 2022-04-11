@@ -1,3 +1,44 @@
+
+<!--connecting to cloud database-->
+<?php
+
+$dbServername = "team12.copftkcel1k2.us-east-1.rds.amazonaws.com";
+$dbUser = "admin";
+$dbPass = "Group12,museum";
+$dbName = "FinalTeam12";
+
+$connect = mysqli_connect($dbServername, $dbUser, $dbPass, $dbName) or die("Unable to Connect to '$dbServername'");
+// mysqli_select_db($connect, $dbName) or die("Could not open the db '$dbName'");
+if($connect->connect_error) {
+    die('Bad connection'. $connect->connect_error);
+}
+
+//session_start();
+// $customer_id = $_SESSION['customer']
+
+//sql query
+$query = mysqli_query($connect,"select exName, eDate, cover_url from Exhibition where sDate <= sysdate() and eDate>=sysdate() order by eDate asc;");
+//$rows = mysqli_fetch_all($query);
+
+/*
+foreach ($rows as $thingy){
+    echo $thingy->exName;
+}
+*/
+/*
+while ($rows = mysqli_fetch_array($query))
+{
+    echo $rows["exName"];
+    echo $rows["eDate"];
+}
+*/
+
+//mysqli_close($connect);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,66 +61,34 @@
                     <li class="nav-item"><a href= "./exhibition_page.php">Exhibition</a></li>
                     <li class="nav-item"><a href=#> Collection </a></li>
                     
-                    <li class="nav-item login-button"><a href=#><button>Login</button></a></li>
+                    <li class="nav-item login-button" ><a href="../Login/Login.php"><button >Login</button></a></li>
                 </ul>
             
         </div>
 
+
 <!-- following is body -->
         <div class = "body-page">
             <h2>Exhibitions</h2>
-            <h3>Current Exhibitions</h4>
-
+            <h3>Current Exhibitions</h4> 
 
             <!--exhibition cards-->
-            <div class="all-cards-container">
+       
+        <div class="all-cards-container">
 
-                <div class= "cards">
-                    <img src="../images/leonardo.jpg.webp" alt= "work by leonardo"  >
-                    <div class = "container">
-                        <h4><b>Leonardo</b></h4>
-                        <p>Through April 4, 2022</p>
-                        <button>Read More</button>
-                    </div>
+             <?php foreach ($query as $thingy): ?>
+
+            <div class= "cards">
+                <img src="<?=htmlspecialchars($thingy["cover_url"])?>" alt="<?=htmlspecialchars($thingy["exName"])?>"  >
+                <div class = "container">
+                    <h4><b><?=htmlspecialchars($thingy["exName"])?></b></h4>
+                    <p>Through <?=htmlspecialchars($thingy["eDate"])?></p>
+                    <button>Read More</button>
                 </div>
-
-
-                <div class= "cards">
-                    <img src="../images/monet.jpg" alt= "work by Monet"  >
-                    <div class = "container">
-                        <h4><b>Monet</b></h4>
-                        <p>Through April 4, 2022</p>
-                        <button>Read More</button>
-                    </div>
-                </div>
-
-                <div class= "cards">
-                    <img src="../images/rafael.jpg" alt= "work by Rafael"  >
-                    <div class = "container">
-                        <h4><b>Rafael</b></h4>
-                        <p>Through April 4, 2022</p>
-                        <button>Read More</button>
-                    </div>
-                </div>
-
-                <div class= "cards">
-                    <img src="../images/vangoh.jpg" alt= "work by Vangoh"  >
-                    <div class = "container">
-                        <h4><b>Vangoh</b></h4>
-                        <p>Through April 4, 2022</p>
-                        <button>Read More</button>
-                    </div>
-                </div>
-
-                <div class= "cards">
-                    <img src="../images/rococo-period.jpg" alt= "work during Rococo"  >
-                    <div class = "container">
-                        <h4><b>Rococo period art work</b></h4>
-                        <p>Through April 4, 2022</p>
-                        <button>Read More</button>
-                    </div>
-                </div>
-            </div>
+            </div>    
+            <?php endforeach ?>
+                            
+            </div>   
 
 
         </div>
