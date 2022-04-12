@@ -11,38 +11,36 @@ if($connect->connect_error) {
 }
 
 session_start();
-
 ?>
-
 <?php
-// $customer_id = $_SESSION['customer']
- 
 // Define variables and initialize with empty values
 $exhiName = $cost = $stDate = $edDate = $cover_url = "";
 $exhiName_err = $cost_err = $start_err = $end_err = $url_err = "";
  
 // Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    // Validate exhiName
+if(isset($_POST["exhiName"]) && !empty($_POST["exhiName"])){
+    // Get hidden input value
+    $exhiName = $_POST["exhiName"];
+    
+    // Validate name
     $input_exhiName = trim($_POST["exhiName"]);
     if(empty($input_exhiName)){
-        $exhiName_err = "Please enter a name.";
-    } //elseif(!filter_var($input_exhiName, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-       // $aexhiName_err = "Please enter a valid name."; }
-     else{
+        $exhiName_err = "Please enter an exhibition name.";
+    } 
+    else{
         $exhiName = $input_exhiName;
     }
-    // Validate cost
-    $input_cost = trim($_POST["cost"]);
-    if(empty($input_cost))
-    {
-        $cost_err = "Please enter the price for this exhibition.";
-    }
-    else{
-        $cost = $input_cost;
-    }
     
-    
+  // Validate cost
+  $input_cost = trim($_POST["cost"]);
+  if(empty($input_cost))
+  {
+      $cost_err = "Please enter the price for this exhibition.";
+  }
+  else{
+      $cost = $input_cost;
+  }
+
     // Validate start date
     $input_start = trim($_POST["stDate"]);
     if(empty($input_start)){
@@ -71,11 +69,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
 
-
     // Check input errors before inserting in database
-    if(empty($exhiName_err) && empty($cost_err) && empty($start_err) && empty($end_err) && empty($url_err)){
-        // Prepare an insert statement
-        $sql = "INSERT INTO Exhibition ( exName, COST,sDate, eDate,cover_url) VALUES (?, ?, ?, ?, ?)";
+ if(empty($exhiName_err) && empty($cost_err) && empty($start_err) && empty($end_err) && empty($url_err)){        // Prepare an update statement
+        $sql = "UPDATE Exhibition SET exName=?, COST=?, sDate=?, eDate=?, cover_url=? WHERE exName=?";
          
         if($stmt = mysqli_prepare($connect, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -88,9 +84,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_end = $edDate;
             $param_url = $cover_url;
 
-        
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
+             // Attempt to execute the prepared statement
+             if(mysqli_stmt_execute($stmt)){
                 // Records created successfully. Redirect to landing page
                 header("location: cur_exhibition.php");
                 exit();
@@ -116,6 +111,57 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     // Close connection
     mysqli_close($connect);
+} else{
+    // Check existence of id parameter before processing further
+    if(isset($_GET["exhiName"]) && !empty(trim($_GET["exhiName"]))){
+        // Get URL parameter
+        $exhiName =  trim($_GET["exhiName"]);
+        
+        // Prepare a select statement
+        $sql = "SELECT * FROM Exhibition WHERE exName = ?";
+        if($stmt = mysqli_prepare($connect, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $param_exhiName);
+            
+            // Set parameters
+            $param_exhiName = $exhiName;
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                $result = mysqli_stmt_get_result($stmt);
+    
+                if(mysqli_num_rows($result) == 1){
+                    /* Fetch result row as an associative array. Since the result set
+                    contains only one row, we don't need to use while loop */
+                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                    
+                    // Retrieve individual field value
+                    $exhiName = $row["exName"];
+                    $cost = $row["COST"];
+                    $stDate = $row["sDate"];
+                    $edDate = $row["eDate"];
+                    $cover_url = $row["cover_url"];
+                } else{
+                    // URL doesn't contain valid id. Redirect to error page
+                    header("location: exhi_error.php");
+                    exit();
+                }
+                
+            } else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+        }
+        
+        // Close statement
+        mysqli_stmt_close($stmt);
+        
+        // Close connection
+        mysqli_close($connect);
+    }  else{
+        // URL doesn't contain id parameter. Redirect to error page
+        header("location: exhi_error.php");
+        exit();
+    }
 }
 ?>
  
@@ -123,7 +169,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Exhibition</title>
+    <title>Update Exhibition</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .wrapper{
@@ -137,8 +183,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="mt-5">Add Exhibition</h2>
-                    <p>Please fill this form and submit to add exhibition to the database.</p>
+                    <h2 class="mt-5">Update Exhibition</h2>
+                    <p>Please edit the input values and submit to update the Exhibition.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="form-group">
                             <label>Exhibition Name</label>
@@ -170,6 +216,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <span class="invalid-feedback"><?php echo $url_err;?></span>
                         </div>
 
+                        <input type="hidden" name="exhiName" value="<?php echo $exhiName; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Submit">
                         <a href="cur_exhibition.php" class="btn btn-secondary ml-2">Cancel</a>
                     </form>

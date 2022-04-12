@@ -74,7 +74,7 @@ if(isset($_POST["exhiName"]) && !empty($_POST["exhiName"])){
                     <h2 class="mt-5 mb-3">Delete Exhibition</h2>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="alert alert-danger">
-                            <input type="text" name="exhiName" value="<?php echo trim($_GET["exhiName"]); ?>"/>
+                            <input type="hidden" name="exhiName" value="<?php echo trim($_GET["exhiName"]); ?>"/>
                             <p>Are you sure you want to delete this exhibition from database?</p>
                             <p>
                                 <input type="submit" value="Yes" class="btn btn-danger">
