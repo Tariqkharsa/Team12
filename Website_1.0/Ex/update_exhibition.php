@@ -24,6 +24,7 @@ if(isset($_POST["exhiName"]) && !empty($_POST["exhiName"])){
     
     // Validate name
     $input_exhiName = trim($_POST["exhiName"]);
+    
     if(empty($input_exhiName)){
         $exhiName_err = "Please enter an exhibition name.";
     } 
@@ -72,11 +73,18 @@ if(isset($_POST["exhiName"]) && !empty($_POST["exhiName"])){
     // Check input errors before inserting in database
  if(empty($exhiName_err) && empty($cost_err) && empty($start_err) && empty($end_err) && empty($url_err)){        // Prepare an update statement
         $sql = "UPDATE Exhibition SET exName=?, COST=?, sDate=?, eDate=?, cover_url=? WHERE exName=?";
+
+       // $sql = "INSERT INTO Exhibition ( exName, COST,sDate, eDate,cover_url) VALUES (?, ?, ?, ?, ?)";
          
         if($stmt = mysqli_prepare($connect, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sdsss", $param_exhiName, $param_cost, $param_start, $param_end, $param_url);
             
+
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "sdssss", $param_exhiName, $param_cost, $param_start, $param_end, $param_url, $param_exhiName);
+            //mysqli_stmt_bind_param($stmt, "d", $param_cost);
+
+         
+
             // Set parameters
             $param_exhiName = $exhiName;
             $param_cost = $cost;
@@ -85,6 +93,7 @@ if(isset($_POST["exhiName"]) && !empty($_POST["exhiName"])){
             $param_url = $cover_url;
 
              // Attempt to execute the prepared statement
+
              if(mysqli_stmt_execute($stmt)){
                 // Records created successfully. Redirect to landing page
                 header("location: cur_exhibition.php");
@@ -103,15 +112,17 @@ if(isset($_POST["exhiName"]) && !empty($_POST["exhiName"])){
                     echo "Oops! Something went wrong. Please try again later.";
                 }
             }
+            
         }
          
         // Close statement
-        mysqli_stmt_close($stmt);
+         mysqli_stmt_close($stmt);
     }
     
     // Close connection
     mysqli_close($connect);
 } else{
+    
     // Check existence of exhiName parameter before processing further
     if(isset($_GET["exhiName"]) && !empty(trim($_GET["exhiName"]))){
         // Get URL parameter
@@ -147,7 +158,8 @@ if(isset($_POST["exhiName"]) && !empty($_POST["exhiName"])){
                     exit();
                 }
                 
-            } else{
+            } 
+            else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
         }
@@ -158,7 +170,7 @@ if(isset($_POST["exhiName"]) && !empty($_POST["exhiName"])){
         // Close connection
         mysqli_close($connect);
     }  else{
-        // URL doesn't contain id parameter. Redirect to error page
+        // URL doesn't contain exhiName parameter. Redirect to error page
         header("location: exhi_error.php");
         exit();
     }
@@ -217,7 +229,7 @@ if(isset($_POST["exhiName"]) && !empty($_POST["exhiName"])){
                             <span class="invalid-feedback"><?php echo $url_err;?></span>
                         </div>
 
-                        <input type="hidden" name="exhiName" value="<?php echo $exhiName; ?>"/>
+                        
                         <input type="submit" class="btn btn-primary" value="Submit">
                         <a href="cur_exhibition.php" class="btn btn-secondary ml-2">Cancel</a>
                     </form>
