@@ -97,6 +97,11 @@ while ($rows = mysqli_fetch_array($query))
                 </div>
             </div>
             <?php endforeach ?>
+
+            <?php
+                mysqli_free_result($query);
+                mysqli_close($connect);
+            ?>
                             
             </div>   
 

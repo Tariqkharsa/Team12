@@ -15,7 +15,7 @@ session_start();
 
 <?php
 // Process delete operation after confirmation
-if(isset($_POST["eName"]) && !empty($_POST["eName"])){
+if(isset($_POST["exhiName"]) && !empty($_POST["exhiName"])){
     
     // Prepare a delete statement
     $sql = "DELETE FROM Exhibition WHERE exName = ?";
@@ -23,10 +23,10 @@ if(isset($_POST["eName"]) && !empty($_POST["eName"])){
     if($stmt = mysqli_prepare($connect, $sql)){
         
         // Bind variables to the prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "s", $param_eName);
+        mysqli_stmt_bind_param($stmt, "s", $param_exhiName);
 
         // Set parameters
-        $param_eName = trim($_POST["eName"]);
+        $param_exhiName = trim($_POST["exhiName"]);
         
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
@@ -45,8 +45,8 @@ if(isset($_POST["eName"]) && !empty($_POST["eName"])){
     mysqli_close($connect);
 } else{
     // Check existence of id parameter
-    if(empty(trim($_GET["eName"]))){
-        // URL doesn't contain eName parameter. Redirect to error page
+    if(empty(trim($_GET["exhiName"]))){
+        // URL doesn't contain exhiName parameter. Redirect to error page
         header("location: exhi_error.php");
         exit();
     }
@@ -74,7 +74,7 @@ if(isset($_POST["eName"]) && !empty($_POST["eName"])){
                     <h2 class="mt-5 mb-3">Delete Exhibition</h2>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="alert alert-danger">
-                            <input type="hidden" name="eName" value="<?php echo trim($_GET["eName"]); ?>"/>
+                            <input type="text" name="exhiName" value="<?php echo trim($_GET["exhiName"]); ?>"/>
                             <p>Are you sure you want to delete this exhibition from database?</p>
                             <p>
                                 <input type="submit" value="Yes" class="btn btn-danger">

@@ -73,8 +73,8 @@ session_start();
                                         echo "<td>" . $row['eDate'] . "</td>";
                                         echo "<td>" . $row['cover_url'] . "</td>";
                                         echo "<td>";
-                                            echo '<a href="update_exhibition.php?id='. $row['exName'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                            echo '<a href="delete_exhibition.php?id='. $row['exName'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                            echo '<a href="update_exhibition.php?exhiName='. $row['exName'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                            echo '<a href="delete_exhibition.php?exhiName='. $row['exName'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                         echo "</td>";
                                     echo "</tr>";
                                 }
