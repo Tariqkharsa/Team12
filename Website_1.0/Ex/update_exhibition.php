@@ -53,13 +53,13 @@ if(isset($_POST["exhiName"]) && !empty($_POST["exhiName"])){
     //validate end date
     $input_end = trim($_POST["edDate"]);
     if(empty($input_end)){
-        $end_err = "Please enter start date";     
+        $end_err = "Please enter end date";     
     }
     else{ 
         $edDate = $input_end;
     }
 
-    //validate end date
+    //validate cover_url date
     $input_url = trim($_POST["cover_url"]);
     if(empty($input_url)){
         $url_err = "Please enter url for exhibition cover picture";     
@@ -112,7 +112,7 @@ if(isset($_POST["exhiName"]) && !empty($_POST["exhiName"])){
     // Close connection
     mysqli_close($connect);
 } else{
-    // Check existence of id parameter before processing further
+    // Check existence of exhiName parameter before processing further
     if(isset($_GET["exhiName"]) && !empty(trim($_GET["exhiName"]))){
         // Get URL parameter
         $exhiName =  trim($_GET["exhiName"]);
@@ -163,6 +163,7 @@ if(isset($_POST["exhiName"]) && !empty($_POST["exhiName"])){
         exit();
     }
 }
+
 ?>
  
 <!DOCTYPE html>

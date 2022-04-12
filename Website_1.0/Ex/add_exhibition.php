@@ -55,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //validate end date
     $input_end = trim($_POST["edDate"]);
     if(empty($input_end)){
-        $end_err = "Please enter start date";     
+        $end_err = "Please enter end date";     
     }
     else{ 
         $edDate = $input_end;
