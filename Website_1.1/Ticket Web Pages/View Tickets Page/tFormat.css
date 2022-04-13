@@ -1,0 +1,138 @@
+body {
+    font-family: "Trebuchet MS", Verdana, sans-serif;
+    font-size: 16px;
+    background-color: dimgrey;
+    color: #696969;
+    padding: 3px;
+}
+
+.Main {
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #ffffff;
+    border-radius: 0 0 5px 5px;
+}
+
+.main {
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #ffffff;
+    border-radius: 0 0 5px 5px;
+}
+
+.Shopping-Cart {
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #ffffff;
+    border-radius: 0 0 5px 5px;
+}
+
+h1 {
+    font-family: Georgia, serif;
+    border-bottom: 3px solid #cc9900;
+    color: #996600;
+    font-size: 30px;
+}
+
+h2 {
+    font-family: Georgia, serif;
+    color: #d8a131;
+    font-size: 30px;
+}
+
+table {
+    background-color: rgb(255, 255, 255);
+}
+
+td,
+th {
+    border: 1px solid black;
+    padding: 20px;
+    margin: 5px;
+    text-align: center;
+}
+
+
+/*
+td:first-child:hover {
+    background-color: rgb(14, 199, 39);
+    color: #ffffff;
+}
+*/
+
+#image {
+    background-color: green;
+}
+
+#button {
+    background-color: #4CAF50;
+    /* Green */
+    border: none;
+    color: white;
+    margin: 5px;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#button:hover {
+    background-color: #2e9232;
+}
+
+#return-button {
+    background-color: #a54343;
+    /* Red */
+    border: none;
+    color: white;
+    margin: 5px;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#return-button:hover {
+    background-color: #a12828;
+}
+
+#checkout-button {
+    background-color: #292bb3;
+    /* Red */
+    border: none;
+    color: white;
+    margin: 5px;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#checkout-button:hover {
+    background-color: #2e159c;
+}
+
+
+/*
+#Row-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    margin: 5px;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#Row-button:hover {
+    background-color: #2e9232;
+}
+*/
