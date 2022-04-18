@@ -19,7 +19,7 @@ if($conn -> connect_errno){
 $ticketID = "";
 ?>
 
-<DOCTYPE html>
+<!DOCTYPE html>
   <html>
   <link rel="stylesheet" href="../tFormat2.css?v=<?php echo time(); ?>">
   <body>

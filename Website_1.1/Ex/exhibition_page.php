@@ -66,7 +66,7 @@ while ($rows = mysqli_fetch_array($query))
                         <div class ="dropdown-content">
                             <a href="./cur_exhibition.php">Exhibitions</a>
                             <a href="../Collections/Collection.php">Art Pieces</a>
-                            <a href=#>Employee</a>
+                            <a href="../Reports/emp_report.php">Employee</a>
                             <a href=#>Report</a>
                         </div>
 
