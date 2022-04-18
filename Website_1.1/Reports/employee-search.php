@@ -21,19 +21,18 @@ if($conn -> connect_errno){
         <head>
         <meta charset = "utf-8">
         <title>Search Employee</title>
-        <link rel="stylesheet" href = #>
+        <link rel="stylesheet" href = "emp_report.css">
         <meta name="viewpoint" content="width=device-width, initial-scale=1">
         </head>
 
         <body>
-            <button>Go Back</button>
-            <div class="flex-container">
+            
                 <h1>Search Employee</h1>
                 <h4>Filter Information From below</h5>
-
+                <div class="flex-container">
                 <form action="employee-retrieval.php" method="GET">
                     <label for="id">Employee ID</label> <!--for is only used to give extra info about what the label is about-->
-                        <input type= "search" name= "emp_id" size=35 value="<?php if(isset($_GET['emp_id'])){echo $_GET['emp_id'];} ?>"><br>  <!--type is used to defined the input type-->  <!--name is being used to reference form data-->
+                        <input class="top-margin" type= "search" name= "emp_id" size=35 value="<?php if(isset($_GET['emp_id'])){echo $_GET['emp_id'];} ?>"><br>  <!--type is used to defined the input type-->  <!--name is being used to reference form data-->
                     <label for="job_title">Job Title</label>
                         <input type="text" name="emp_title" size=35 maxlength="100" value="<?php if(isset($_GET['emp_title'])){echo $_GET['emp_title'];} ?>"><br>
                     <label for="fName">First Name</label>
@@ -62,7 +61,8 @@ if($conn -> connect_errno){
                     <label for="d_num">Department</label>
                         <input type="number" name="dept_num" min="0" value="<?php if(isset($_GET['emp_dNum'])){echo $_GET['emp_dNum'];} ?>"><br>
 
-                    <input type= "submit" name="submit" value="Search"><br>
+                    <input class="button" type= "submit" name="submit" value="Search"> 
+                    <button class="bottom-margin">Go Back</button>
                 </form>
             </div>
         </body>
