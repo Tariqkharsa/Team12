@@ -1,7 +1,7 @@
-//Connecting to server
 <?php
 require_once "database.php";
 $price=$itemname=$quantity="";
+$check_itemname = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // variable containing query to search database for given item name from textbox
     $check_itemname = "SELECT * FROM FinalTeam12.GiftShop WHERE item_name='$itemname'";
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (mysqli_stmt_execute($stmt)) {
                 $success = '<div class="alert alert-success" role="alert">Your item has been created.</div>';
                 // wait 2 seconds then redirect to sign-in page
-                header('refresh:1; url=sign-in.php');
+                header('refresh:1; url=giftshop.php');
             }
             else $error = '<div class="alert alert-danger" role="alert">Oops, something went wrong. Please try again later.</div>';
         }
@@ -73,8 +73,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="row">
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">
-                        <h2 class="pull-left">Art Pieces</h2>
-                        <a href="giftShopCreate.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add Art Pieces</a>
+                        <h2 class="pull-left">Gift Shop</h2>
+                        <a href="giftShopCreate.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add Gift Shop Items</a>
                     </div>
                     <?php
                     // Attempt select query execution
@@ -93,16 +93,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                        echo "<td>" . $row['id'] . "</td>";
-                                        echo "<td>" . $row['item_name'] . "</td>";
-                                        echo "<td>" . $row['price'] . "</td>";
-                                        echo "<td>" . $row['quantiy'] . "</td>";
+                                        echo "<td>" . $row['GiftID'] . "</td>";
+                                        echo "<td>" . $row['GiftName'] . "</td>";
+                                        echo "<td>" . $row['Price'] . "</td>";
+                                        echo "<td>" . $row['quantity'] . "</td>";
                                         echo "<td>";
 
                                             //TODO: REDO THESE METHODS FOR GIFTSHOP
-                                            echo '<a href="read.php?id='. $row['AID'] .'" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                                            echo '<a href="update.php?id='. $row['AID'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                                            echo '<a href="delete.php?id='. $row['AID'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                            
+                                            echo '<a href="giftRead.php?id='. $row['GiftID'] .'" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                                            echo '<a href="giftUpdate.php?id='. $row['GiftID'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                                            echo '<a href="giftDelete.php?id='. $row['GiftID'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
                                         echo "</td>";
                                     echo "</tr>";
                                 }
