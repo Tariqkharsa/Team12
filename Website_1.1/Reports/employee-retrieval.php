@@ -20,13 +20,14 @@ if($conn -> connect_errno){
   <head>
     <meta charset = "utf-8">
         <title>Found Employees</title>
-        <link rel="stylesheet" href = #>
+        <link rel="stylesheet" href = "emp_report.css">
         <meta name="viewpoint" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
-    <div class="container">
-    <h1>Employees</h1>
+  <h1>Employees</h1>
+    <div class="flex-container2">
+    
 
     <div class="output">
       <?php
@@ -130,64 +131,13 @@ if($conn -> connect_errno){
        // echo $row['JOBTITLE'];
 
 
-/*
-$query ="SELECT * from EMPLOYEES;";
-$result = mysqli_query($conn,$query);
 
-//$row = mysqli_fetch_array($result);
-
-if(mysqli_num_rows($result) > 0){
-    //create table
-    echo "<table >";
-    echo "<thread>";
-      echo "<tr>";
-        echo "<th>Employee ID</th>";
-        echo "<th>Job Title</th>";
-        echo "<th>First Name</th>";
-        echo "<th>Last Name</th>";
-        echo "<th>Age</th>";
-        echo "<th>Sex</th>";
-        echo "<th>Phone Number</th>";
-        echo "<th>Address</th>";
-        echo "<th>Salary</th>";
-        echo "<th>Birthday</th>";
-        echo "<th>Department</th>";
-      echo "</tr>";
-      echo "</thread>";
-
-      //echo "<tbody>";
-      //loop to add employee information from database into table
-      while($row = mysqli_fetch_array($result)){
-        echo "<tr>";
-          echo "<td>"  . $row['EMPLOYEE_ID']  .  "</td>";
-          echo "<td>"  . $row['JOBTITLE']  .  "</td>";
-          echo "<td>"  . $row['FIRST_NAME']  .  "</td>";
-          echo "<td>"  . $row['LAST_NAME']  .  "</td>";
-          echo "<td>"  . $row['AGE']  .  "</td>";
-          echo "<td>"  . $row['SEX']  .  "</td>";
-          echo "<td>"  . $row['PHONE_NUMBER']  .  "</td>";
-          echo "<td>"  . $row['EMPLOYEE_ADDRESS']  .  "</td>";
-          echo "<td>"  . $row['SALARY']  .  "</td>";
-          echo "<td>"  . $row['BIRTHDAY']  .  "</td>";
-          echo "<td>"  . $row['dNUM']  .  "</td>";
-        echo "</tr>";
-      }
-      //echo "</tbody>";
-    echo "</table>";
-  }
-
-  //if ticket id is not found
-  else{
-    echo "No employee is found!";
-  }
-
-     */
     
      //if ticket id is found
         
         if(mysqli_num_rows($result) > 0){
           //create table
-          echo "<table border='2'>";
+          echo "<table border='1'>";
           echo "<thread>";
             echo "<tr>";
               echo "<th>Employee ID</th>";
@@ -226,8 +176,9 @@ if(mysqli_num_rows($result) > 0){
             }
             //echo "</tbody>";
           echo "</table>";
+          echo "<br>";
         }
-
+          
         //if ticket id is not found
         else{
           echo "No employee is found!";
@@ -235,9 +186,9 @@ if(mysqli_num_rows($result) > 0){
         
       ?>
     </div>
-    <nav class="nav-item"><a href="employee-Search.php"><button class="button-56" role="button">Return</button></a></nav>
- 
+  
   </div>
+  <a class="retrieval" href='employee-search.php'>Return</a>
   </body>
   </html>
 

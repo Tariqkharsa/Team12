@@ -61,8 +61,8 @@ if($conn -> connect_errno){
                     <label for="d_num">Department</label>
                         <input type="number" name="dept_num" min="0" value="<?php if(isset($_GET['emp_dNum'])){echo $_GET['emp_dNum'];} ?>"><br>
 
-                    <input class="button" type= "submit" name="submit" value="Search"> 
-                    <button class="bottom-margin">Go Back</button>
+                    <input class="a" type= "submit" name="submit" value="Search"> 
+                    <a style="padding:10px"class="bottom-margin" href=#>Go Back</a>
                 </form>
             </div>
         </body>
