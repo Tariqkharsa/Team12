@@ -219,12 +219,12 @@ DROP TABLE IF EXISTS `GiftShop`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `GiftShop` (
-  `GiftID` int NOT NULL,
-  `GiftName` varchar(30) DEFAULT NULL,
-  `Price` double(16,2) DEFAULT NULL,
-  `SpecialStatus` enum('Sold','In Stock') NOT NULL,
-  PRIMARY KEY (`GiftID`),
-  CONSTRAINT `GiftShop_ibfk_1` FOREIGN KEY (`GiftID`) REFERENCES `CUSTOMERS` (`CID`)
+    'GiftID'		INT(10) NOT NULL AUTO_INCREMENT,
+    'quantity'    INT(10) NOT NULL,
+    'GiftName'	VARCHAR(30) NOT NULL,
+    'Price'		DOUBLE(16,2) NOT NULL,
+    'SpecialStatus'	ENUM('Sold', 'In Stock'),
+    Primary Key (GiftID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
