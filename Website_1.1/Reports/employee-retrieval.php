@@ -100,7 +100,7 @@ if($conn -> connect_errno){
 
             else
             {
-                $query9="SALARY>='$left_bound";
+                $query9="SALARY>='$left_bound'";
             }
         }
 
