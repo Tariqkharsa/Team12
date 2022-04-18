@@ -76,7 +76,7 @@ if($conn -> connect_errno){
             $query4 = "LAST_NAME LIKE '%{$lName}%'";
         }
         if($age != ''){
-            $query5 = "AGE= '$age''";
+            $query5 = "AGE= '$age'";
         }
 
         if(!empty($sex)){
@@ -123,7 +123,7 @@ if($conn -> connect_errno){
 
 
         //$query = $query0 . $query1 . ' AND ' . $query2 . ' AND ' . $query3  . ' AND ' . $query4 . ' AND ' . $query5 . ' AND ' . $query6 . ' AND ' . $query7 . ' AND ' . $query8 . ' AND ' . $query9 . ' AND ' . $query10 . ' AND ' . $query11 ;
-        $query =$query0 . $query1.' and ' .$query2.' and ' .$query3. ' and '.$query4. ' and '.$query5 .' and '.$query6. ' and '. $query7. ' and ' .$query8. ' and ' .$query9. ' and '. $query10 .' and '.$query11;
+        $query =$query0 . $query1.' and ' .$query2.' and ' .$query3. ' and '.$query4. ' and '.$query5.' and '.$query6. ' and '. $query7. ' and ' .$query8. ' and ' .$query9;
         $result = mysqli_query($conn,$query);
 
         //$row = mysqli_fetch_array($result);
@@ -135,13 +135,59 @@ $query ="SELECT * from EMPLOYEES;";
 $result = mysqli_query($conn,$query);
 
 //$row = mysqli_fetch_array($result);
+
+if(mysqli_num_rows($result) > 0){
+    //create table
+    echo "<table >";
+    echo "<thread>";
+      echo "<tr>";
+        echo "<th>Employee ID</th>";
+        echo "<th>Job Title</th>";
+        echo "<th>First Name</th>";
+        echo "<th>Last Name</th>";
+        echo "<th>Age</th>";
+        echo "<th>Sex</th>";
+        echo "<th>Phone Number</th>";
+        echo "<th>Address</th>";
+        echo "<th>Salary</th>";
+        echo "<th>Birthday</th>";
+        echo "<th>Department</th>";
+      echo "</tr>";
+      echo "</thread>";
+
+      //echo "<tbody>";
+      //loop to add employee information from database into table
+      while($row = mysqli_fetch_array($result)){
+        echo "<tr>";
+          echo "<td>"  . $row['EMPLOYEE_ID']  .  "</td>";
+          echo "<td>"  . $row['JOBTITLE']  .  "</td>";
+          echo "<td>"  . $row['FIRST_NAME']  .  "</td>";
+          echo "<td>"  . $row['LAST_NAME']  .  "</td>";
+          echo "<td>"  . $row['AGE']  .  "</td>";
+          echo "<td>"  . $row['SEX']  .  "</td>";
+          echo "<td>"  . $row['PHONE_NUMBER']  .  "</td>";
+          echo "<td>"  . $row['EMPLOYEE_ADDRESS']  .  "</td>";
+          echo "<td>"  . $row['SALARY']  .  "</td>";
+          echo "<td>"  . $row['BIRTHDAY']  .  "</td>";
+          echo "<td>"  . $row['dNUM']  .  "</td>";
+        echo "</tr>";
+      }
+      //echo "</tbody>";
+    echo "</table>";
+  }
+
+  //if ticket id is not found
+  else{
+    echo "No employee is found!";
+  }
+
      */
     
      //if ticket id is found
         
         if(mysqli_num_rows($result) > 0){
           //create table
-          echo "<table border='1px'>";
+          echo "<table border='2'>";
           echo "<thread>";
             echo "<tr>";
               echo "<th>Employee ID</th>";
